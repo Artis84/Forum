@@ -1,0 +1,1 @@
+docker build -t forum_db_image -f ./DockerFile.txt .

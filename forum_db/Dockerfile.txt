@@ -1,0 +1,35 @@
+#Etape 1
+
+FROM node as builder
+
+
+WORKDIR C:\Users\Jacques\Desktop\forum\forum_db
+
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . . 
+
+RUN npm run-script build
+
+
+#Etape 2
+FROM node
+
+WORKDIR C:\Users\Jacques\Desktop\forum\forum_db
+
+COPY package*.json ./
+
+RUN npm install --production
+
+COPY --from=builder C:\Users\Jacques\Desktop\forum\forum_db ./forum_db
+
+COPY ormconfig.docker.json ./ormconfig.json
+COPY .env .
+
+# Make port 4000 available to the world outside this container
+EXPOSE 4000
+
+CMD node index.js

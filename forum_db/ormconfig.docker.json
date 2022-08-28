@@ -1,0 +1,14 @@
+{
+	"type": "postgres",
+	"host": "db",
+	"port": 5432,
+	"username": "postgres",
+	"password": "postgres",
+	"database": "stripe-exemple",
+	"synchronize": true,
+	"logging": false,
+	"migrations":["/migrations/**/*"],
+	"cli": {
+		"migrationsDir": "/migrations"
+	}
+}
